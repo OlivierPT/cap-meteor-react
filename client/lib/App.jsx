@@ -5,7 +5,14 @@ var {
     AppBar,
     Styles,
     RaisedButton,
-    DatePicker
+    DatePicker,
+    MenuItem,
+    IconButton,
+    NavigationClose,
+    IconMenu,
+    FontIcon,
+    FlatButton,
+    LeftNav
     } = MUI;
 var { ThemeManager, LightRawTheme } = Styles;
 
@@ -21,12 +28,21 @@ var App = React.createClass({
     },
 
     render: function () {
-        return (
+
+      return (
             <AppCanvas>
-                <AppBar title="izziLab"/>
+              <AppBar
+                title={<span>Cap Meteor</span>}
+                iconElementRight={<FlatButton label="Save" />} />
+
+              <ChannelsList></ChannelsList>
 
                 <div style={{padding: '80px',}}>
+
                     <RaisedButton primary={true} label="Tap"/>
+                    <RaisedButton secondary={true} label="Tap" labelPosition="after">
+                      <FontIcon className="muidocs-icon-custom-github" />
+                    </RaisedButton>
                     <br/>
                     <DatePicker hintText="Portrait Dialog"/>
                     <br/>
@@ -39,8 +55,6 @@ var App = React.createClass({
     }
 });
 
-if (Meteor.isClient) {
-    Meteor.startup(() => {
-        ReactDOM.render(<App/>, document.getElementById('react-root'));
-    });
-}
+Meteor.startup(() => {
+    ReactDOM.render(<App/>, document.getElementById('react-root'));
+});
