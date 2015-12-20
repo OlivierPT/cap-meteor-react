@@ -16,7 +16,7 @@ var {
     } = MUI;
 var { ThemeManager, LightRawTheme } = Styles;
 
-var App = React.createClass({
+App = React.createClass({
     childContextTypes: {
         muiTheme: React.PropTypes.object
     },
@@ -32,29 +32,20 @@ var App = React.createClass({
       return (
             <AppCanvas>
               <AppBar
-                title={<span>Cap Meteor</span>}
+                title={<span>Cap Meteor (React version)</span>}
                 iconElementRight={<FlatButton label="Save" />} />
 
               <ChannelsList></ChannelsList>
 
-                <div style={{padding: '80px',}}>
+              <div style={{padding: '80px',}}>
 
-                    <RaisedButton primary={true} label="Tap"/>
-                    <RaisedButton secondary={true} label="Tap" labelPosition="after">
-                      <FontIcon className="muidocs-icon-custom-github" />
-                    </RaisedButton>
-                    <br/>
-                    <DatePicker hintText="Portrait Dialog"/>
-                    <br/>
-                    <DatePicker
-                        hintText="Landscape Dialog"
-                        mode="landscape"/>
+                    <Room></Room>
                 </div>
             </AppCanvas>
         );
     }
 });
 
-Meteor.startup(() => {
-    ReactDOM.render(<App/>, document.getElementById('react-root'));
-});
+// Meteor.startup(() => {
+//     ReactDOM.render(<App/>, document.getElementById('react-root'));
+// });

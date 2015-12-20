@@ -1,16 +1,13 @@
 var {
-    AppCanvas,
-    AppBar,
     Styles,
     RaisedButton,
-    DatePicker,
     MenuItem,
     IconButton,
-    NavigationClose,
     IconMenu,
     FontIcon,
     FlatButton,
-    LeftNav
+    LeftNav,
+    TextField
     } = MUI;
 
 Meteor.subscribe("channels");
@@ -31,6 +28,22 @@ ChannelsList = React.createClass({
     };
   },
 
+  handleSubmit(event) {
+    event.preventDefault();
+
+    // Find the text field via the React ref
+    var label = this.refs.newChannel.getValue().trim();
+
+    Meteor.call("addChannel", label, function(error, result) {
+      if (error) {
+        console.log('Channel creation error - ', err);
+      }
+    });
+    
+    // Clear form
+    this.refs.newChannel.setValue("");
+  },
+
   renderChannels() {
     // Get Channels from this.data.channels
     return this.data.channels.map((channel) => {
@@ -45,6 +58,14 @@ ChannelsList = React.createClass({
         <LeftNav ref="leftNavChildren" docked={true}>
           <MenuItem index={0}>Channel List ({this.data.channelsCount})</MenuItem>
           {this.renderChannels()}
+
+          <form onSubmit={this.handleSubmit} >
+            <TextField
+              ref="newChannel"
+              hintText="Channel label"
+              floatingLabelText="Create a Channel" />
+            <IconButton iconClassName="muidocs-icon-custom-github" tooltip="GitHub"/>
+          </form>
         </LeftNav>
     );
   }
