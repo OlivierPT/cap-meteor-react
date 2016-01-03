@@ -7,7 +7,7 @@ var {
     CardText
     } = MUI;
 
-// Channel component
+// Room component
 Room = React.createClass({
   propTypes: {
     channel: React.PropTypes.object.isRequired,
