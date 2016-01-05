@@ -6,6 +6,6 @@ FlowRouter.route('/', {
 
 FlowRouter.route('/signupin', {
   action() {
-    ReactLayout.render(MainLayout, {content: <SignUpIn/>});
+    ReactLayout.render(MinimalLayout, {content: <SignUpIn/>});
   }
 });

@@ -1,4 +1,4 @@
-MainLayout = React.createClass({
+MinimalLayout = React.createClass({
   render() {
     return (
       <div>

@@ -1,12 +1,11 @@
 var {
     Styles,
-    RaisedButton,
+    Menu,
     MenuItem,
     IconButton,
     IconMenu,
     FontIcon,
-    FlatButton,
-    LeftNav,
+    ArrowDropRight,
     TextField
     } = MUI;
 
@@ -36,10 +35,10 @@ ChannelsList = React.createClass({
 
     Meteor.call("addChannel", label, function(error, result) {
       if (error) {
-        console.log('Channel creation error - ', err);
+        console.log('Channel creation error - ', error);
       }
     });
-    
+
     // Clear form
     this.refs.newChannel.setValue("");
   },
@@ -47,26 +46,29 @@ ChannelsList = React.createClass({
   renderChannels() {
     // Get Channels from this.data.channels
     return this.data.channels.map((channel) => {
-      return <Channel
-        key={channel._id}
-        channel={channel} />;
+      return <MenuItem key={channel._id} primaryText={channel.label} rightIcon={<ArrowDropRight />} />;
     });
   },
 
   render() {
     return (
-        <LeftNav ref="leftNavChildren" docked={true}>
-          <MenuItem index={0}>Channel List ({this.data.channelsCount})</MenuItem>
-          {this.renderChannels()}
+      <div>
+        <div>Channel List ({this.data.channelsCount})</div>
 
-          <form onSubmit={this.handleSubmit} >
-            <TextField
-              ref="newChannel"
-              hintText="Channel label"
-              floatingLabelText="Create a Channel" />
-            <IconButton iconClassName="muidocs-icon-custom-github" tooltip="GitHub"/>
-          </form>
-        </LeftNav>
+        <Menu>
+        { this.data.channels.map(channel =>
+          <MenuItem key={channel._id} primaryText={channel.label} />
+        )}
+      </Menu>
+
+        <form onSubmit={this.handleSubmit} >
+          <TextField
+            ref="newChannel"
+            hintText="Channel label"
+            floatingLabelText="Create a Channel" />
+          <IconButton iconClassName="muidocs-icon-custom-github" tooltip="GitHub"/>
+        </form>
+      </div>
     );
   }
 });

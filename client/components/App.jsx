@@ -1,51 +1,26 @@
 injectTapEventPlugin();
 
 var {
-    AppCanvas,
-    AppBar,
-    Styles,
-    RaisedButton,
-    DatePicker,
-    MenuItem,
-    IconButton,
-    NavigationClose,
-    IconMenu,
-    FontIcon,
-    FlatButton,
-    LeftNav
+    Card,
+    CardTitle,
+    CardText
     } = MUI;
-var { ThemeManager, LightRawTheme } = Styles;
+
+
 
 App = React.createClass({
-    childContextTypes: {
-        muiTheme: React.PropTypes.object
-    },
-
-    getChildContext() {
-        return {
-            muiTheme: ThemeManager.getMuiTheme(LightRawTheme)
-        };
-    },
 
     render: function () {
 
       return (
-            <AppCanvas>
-              <AppBar
-                title={<span>Cap Meteor (React version)</span>}
-                iconElementRight={<FlatButton label="Save" />} />
-
-              <ChannelsList></ChannelsList>
-
-              <div style={{padding: '80px',}}>
-
-                    <Room></Room>
-                </div>
-            </AppCanvas>
+        <Card>
+            <CardText>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
+              Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
+              Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+            </CardText>
+        </Card>
         );
     }
 });
-
-// Meteor.startup(() => {
-//     ReactDOM.render(<App/>, document.getElementById('react-root'));
-// });
