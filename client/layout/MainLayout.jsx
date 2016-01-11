@@ -28,21 +28,33 @@ MainLayout = React.createClass({
       };
   },
 
+  _onMenuIconButtonTouchTap: function () {
+      this.refs.leftNav.toggle();
+    },
+
   render() {
     return (
-      <AppCanvas>
-        <AppBar
-          title={<span>Cap Meteor React</span>}
-          iconElementRight={<FlatButton label="Save" />} />
+      <AppCanvas predefinedLayout={1}>
 
-          <div>
-            <ChannelsList></ChannelsList>
+          <AppBar
+            className="mui-dark-theme"
+            title={<span>Cap Meteor React</span>}
+            onMenuIconButtonTouchTap={this._onMenuIconButtonTouchTap}
+            zDepth={0}>
+            <div className="action-icons">
+              <IconButton icon="navigation-more-vert" />
+              <IconButton icon="action-favorite-outline" />
+              <IconButton icon="action-search" />
+            </div>
+          </AppBar>
+
+          <ChannelsList ref='leftNav'/>
+
+          <div className='mui-app-content-canvas'>
+            {this.props.content}
           </div>
 
-          <div style={{padding: '80px',}}>
-              <main>{this.props.content}</main>
-          </div>
-      </AppCanvas>
+        </AppCanvas>
 
     );
   }

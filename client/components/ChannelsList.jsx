@@ -6,7 +6,9 @@ var {
     IconMenu,
     FontIcon,
     ArrowDropRight,
-    TextField
+    TextField,
+    LeftNav,
+    AppBar
     } = MUI;
 
 Meteor.subscribe("channels");
@@ -43,32 +45,43 @@ ChannelsList = React.createClass({
     this.refs.newChannel.setValue("");
   },
 
-  renderChannels() {
-    // Get Channels from this.data.channels
-    return this.data.channels.map((channel) => {
-      return <MenuItem key={channel._id} primaryText={channel.label} rightIcon={<ArrowDropRight />} />;
-    });
-  },
+
+  toggle:function () {
+      this.refs.leftNav.toggle();
+    },
+
+    close: function () {
+      this.refs.leftNav.close()
+    },
+
+    _onLeftNavChange: function(e, selectedIndex, menuItem) {
+      this.transitionTo(menuItem.payload);
+      this.refs.leftNav.close();
+    },
 
   render() {
     return (
-      <div>
-        <div>Channel List ({this.data.channelsCount})</div>
+      <LeftNav
+          ref="leftNav"
+          docked={false}
+          isInitiallyOpen={true}
+          onClick={this._onLeftNavChange}>
 
-        <Menu>
-        { this.data.channels.map(channel =>
-          <MenuItem key={channel._id} primaryText={channel.label} />
-        )}
-      </Menu>
+          <AppBar title="Channel List ({this.data.channelsCount})"/>
 
-        <form onSubmit={this.handleSubmit} >
-          <TextField
-            ref="newChannel"
-            hintText="Channel label"
-            floatingLabelText="Create a Channel" />
-          <IconButton iconClassName="muidocs-icon-custom-github" tooltip="GitHub"/>
-        </form>
-      </div>
+            { this.data.channels.map(channel =>
+              <MenuItem key={channel._id} primaryText={channel.label} />
+            )}
+
+            <form onSubmit={this.handleSubmit} >
+              <TextField
+                ref="newChannel"
+                hintText="Channel label"
+                floatingLabelText="Create a Channel" />
+              <IconButton iconClassName="muidocs-icon-custom-github" tooltip="GitHub"/>
+            </form>
+
+        </LeftNav>
     );
   }
 });
