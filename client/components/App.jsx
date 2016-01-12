@@ -3,15 +3,17 @@ injectTapEventPlugin();
 var {
     Card,
     CardTitle,
-    CardText
+    CardText,
+    Paper,
+    Input,
+    RaisedButton
     } = MUI;
 
 
 
 App = React.createClass({
 
-    render: function () {
-
+    render: () => {
       return (
         <Card>
             <CardText>
@@ -20,7 +22,7 @@ App = React.createClass({
               Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
               Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
             </CardText>
-        </Card>
+          </Card>
         );
     }
 });

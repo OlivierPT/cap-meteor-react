@@ -22,7 +22,7 @@ MainLayout = React.createClass({
       muiTheme: React.PropTypes.object
   },
 
-  getChildContext() {
+  getChildContext: function () {
       return {
           muiTheme: ThemeManager.getMuiTheme(LightRawTheme)
       };
@@ -32,14 +32,13 @@ MainLayout = React.createClass({
       this.refs.leftNav.toggle();
     },
 
-  render() {
+  render: function () {
     return (
       <AppCanvas predefinedLayout={1}>
 
           <AppBar
-            className="mui-dark-theme"
             title={<span>Cap Meteor React</span>}
-            onMenuIconButtonTouchTap={this._onMenuIconButtonTouchTap}
+            onLeftIconButtonTouchTap={this._onMenuIconButtonTouchTap}
             zDepth={0}>
             <div className="action-icons">
               <IconButton icon="navigation-more-vert" />
@@ -50,9 +49,9 @@ MainLayout = React.createClass({
 
           <ChannelsList ref='leftNav'/>
 
-          <div className='mui-app-content-canvas'>
+          <main>
             {this.props.content}
-          </div>
+          </main>
 
         </AppCanvas>
 

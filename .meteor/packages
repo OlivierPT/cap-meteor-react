@@ -19,10 +19,10 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 kadira:flow-router
 kadira:react-layout
 izzilab:material-ui
-aldeed:collection2
 accounts-password
 meteorhacks:kadira
 service-configuration
 accounts-github
 react
 less
+aldeed:simple-schema
