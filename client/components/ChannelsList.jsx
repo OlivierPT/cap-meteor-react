@@ -68,7 +68,7 @@ ChannelsList = React.createClass({
         isInitiallyOpen={false}
         onClick={this._onLeftNavChange}>
 
-        <AppBar title="Channel List ({this.data.channelsCount})"/>
+        <AppBar title="Channel List ({{this.data.channelsCount}})"/>
 
         { this.data.channels.map(channel =>
           <MenuItem key={channel._id} primaryText={channel.label} />

@@ -49,7 +49,7 @@ MainLayout = React.createClass({
 
           <ChannelsList ref='leftNav'/>
 
-          <main>
+          <main className="main">
             {this.props.content}
           </main>
 
