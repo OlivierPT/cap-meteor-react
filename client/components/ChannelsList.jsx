@@ -11,8 +11,6 @@ var {
   AppBar
 } = MUI;
 
-Meteor.subscribe("channels");
-
 // ChannelsList component
 ChannelsList = React.createClass({
 
@@ -60,6 +58,10 @@ ChannelsList = React.createClass({
     this.refs.leftNav.close();
   },
 
+  handleChannelSelect: function(event, item) {
+    FlowRouter.go("/channels/");
+  },
+
   render() {
     return (
       <LeftNav
@@ -71,7 +73,9 @@ ChannelsList = React.createClass({
         <AppBar title="Channel List ({{this.data.channelsCount}})"/>
 
         { this.data.channels.map(channel =>
-          <MenuItem key={channel._id} primaryText={channel.label} />
+          <MenuItem key={channel._id} primaryText={channel.label}
+            onTouchTap={this.handleChannelSelect}
+            />
         )}
 
         <form onSubmit={this.handleSubmit} >

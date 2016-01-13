@@ -13,6 +13,18 @@ Room = React.createClass({
     channel: React.PropTypes.object.isRequired,
   },
 
+  // This mixin makes the getMeteorData method work
+  mixins: [ReactMeteorData],
+
+  // Loads items from the Channels collection and puts them on this.data.tasks
+  getMeteorData: () => {
+    Meteor.subscribe('messages', this.params.channelId);
+
+    return {
+      messages: Messages.find().fetch()
+    };
+  },
+
   render() {
     return (
         <Card>
