@@ -73,9 +73,7 @@ ChannelsList = React.createClass({
         <AppBar title="Channel List ({{this.data.channelsCount}})"/>
 
         { this.data.channels.map(channel =>
-          <MenuItem key={channel._id} primaryText={channel.label}
-            onTouchTap={this.handleChannelSelect}
-            />
+          <Channel channel={channel} />
         )}
 
         <form onSubmit={this.handleSubmit} >

@@ -17,6 +17,7 @@ FlowRouter.route('/channels/:channelId', {
   triggersEnter: [checkUserConnected],
   action(params, queryParams) {
     console.log("Yeah! We are on the channel:", params.channelId);
+    ReactLayout.render(MainLayout, {content: <Room channelId={params.channelId}/>});
   }
 });
 

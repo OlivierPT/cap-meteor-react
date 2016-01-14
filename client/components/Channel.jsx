@@ -9,9 +9,14 @@ Channel = React.createClass({
     channel: React.PropTypes.object.isRequired,
   },
 
+  handleChannelSelect: function(event, item) {
+    FlowRouter.go("/channels/"+this.props.channel._id);
+  },
+
   render() {
     return (
-        <MenuItem primaryText="{this.props.channel.label}" rightIcon={<ArrowDropRight />} />
+          <MenuItem key={this.props.channel._id} primaryText={this.props.channel.label}
+            onTouchTap={this.handleChannelSelect}/>
     );
   }
 });
