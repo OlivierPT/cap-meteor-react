@@ -19,17 +19,14 @@ Room = React.createClass({
     channelId: React.PropTypes.string.isRequired
   },
 
-  channelId: () => {
-    return this.props.channelId;
-  },
-
   // Loads items from the Channels collection and puts them on this.data.tasks
-  getMeteorData: () => {
-    Meteor.subscribe('messages', this.channelId);
+  getMeteorData() {
+    Meteor.subscribe('messages', this.props.channelId);
 
     return {
       messages: Messages.find().fetch(),
-      nbMessages: Messages.find().count()
+      messagesCount: Messages.find().count(),
+      channel: Channels.findOne(this.props.channelId)
     };
   },
 
@@ -50,10 +47,10 @@ Room = React.createClass({
     this.refs.newMessage.setValue("");
   },
 
-  render() {
+  render: function() {
     return (
         <Card>
-            <CardTitle title={this.props.channelId+" "+this.data.nbMessages} subtitle="Messages"/>
+            <CardTitle title={this.data.channel.label+" "+this.data.messagesCount} subtitle="Messages"/>
             <CardText>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
@@ -61,12 +58,12 @@ Room = React.createClass({
               Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
             </CardText>
             <CardActions>
-              <form onSubmit={this.handleSubmit} >
+              <form onSubmit={this.handleSubmit} ref="mesgForm">
                 <TextField
                   ref="newMessage"
                   hintText="Message"
                   floatingLabelText="Send a message" />
-                <FlatButton label="Send"/>
+                <FlatButton label="Send" onTouchTap={this.handleSubmit}/>
               </form>
 
             </CardActions>

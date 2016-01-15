@@ -18,7 +18,7 @@ ChannelsList = React.createClass({
   mixins: [ReactMeteorData],
 
   // Loads items from the Channels collection and puts them on this.data.tasks
-  getMeteorData: () => {
+  getMeteorData() {
     Meteor.subscribe('channels');
 
     return {
@@ -73,7 +73,7 @@ ChannelsList = React.createClass({
         <AppBar title="Channel List ({{this.data.channelsCount}})"/>
 
         { this.data.channels.map(channel =>
-          <Channel channel={channel} />
+          <Channel key={channel._id} channel={channel} />
         )}
 
         <form onSubmit={this.handleSubmit} >
