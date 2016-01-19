@@ -1,4 +1,6 @@
-var {
+injectTapEventPlugin();
+
+const {
     Styles,
     RaisedButton,
     IconButton,
@@ -7,8 +9,12 @@ var {
     CardText,
     CardActions,
     FlatButton,
-    TextField
+    TextField,
+    List,
+    ListItem
     } = MUI;
+
+//const { ContentInbox } = MUI.SvgIcons;
 
 // Room component
 Room = React.createClass({
@@ -35,6 +41,7 @@ Room = React.createClass({
 
     var newMessage = {};
     // Find the text field via the React ref
+    newMessage.channelId = this.props.channelId;
     newMessage.text = this.refs.newMessage.getValue().trim();
 
     Meteor.call("sendMessage", newMessage, function(error, result) {
@@ -52,10 +59,11 @@ Room = React.createClass({
         <Card>
             <CardTitle title={this.data.channel.label+" "+this.data.messagesCount} subtitle="Messages"/>
             <CardText>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-              Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-              Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+              <List>
+              { this.data.messages.map(message =>
+                  <ListItem primaryText={message.text} />
+              )}
+              </List>
             </CardText>
             <CardActions>
               <form onSubmit={this.handleSubmit} ref="mesgForm">
