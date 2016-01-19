@@ -4,15 +4,9 @@ var {
     AppCanvas,
     AppBar,
     Styles,
-    RaisedButton,
-    DatePicker,
-    MenuItem,
     IconButton,
-    NavigationClose,
     IconMenu,
-    FontIcon,
-    FlatButton,
-    LeftNav
+    FontIcon
     } = MUI;
 
 var { ThemeManager, LightRawTheme } = Styles;
@@ -39,12 +33,8 @@ MainLayout = React.createClass({
           <AppBar
             title={<span>Cap Meteor React</span>}
             onLeftIconButtonTouchTap={this._onMenuIconButtonTouchTap}
-            zDepth={0}>
-            <div className="action-icons">
-              <IconButton icon="navigation-more-vert" />
-              <IconButton icon="action-favorite-outline" />
-              <IconButton icon="action-search" />
-            </div>
+            zDepth={0}
+            iconElementRight={<UserMenu />}>
           </AppBar>
 
           <ChannelsList ref='leftNav'/>
