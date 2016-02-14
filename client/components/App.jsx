@@ -1,5 +1,3 @@
-injectTapEventPlugin();
-
 var {
     Card,
     CardTitle,

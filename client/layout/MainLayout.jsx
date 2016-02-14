@@ -23,7 +23,7 @@ MainLayout = React.createClass({
   },
 
   _onMenuIconButtonTouchTap: function () {
-      this.refs.leftNav.toggle();
+      this.refs.leftNav.setState({open: !this.refs.leftNav.state.open});
     },
 
   render: function () {

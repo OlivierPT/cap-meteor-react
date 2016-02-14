@@ -44,18 +44,8 @@ ChannelsList = React.createClass({
     this.refs.newChanLabel.setValue("");
   },
 
-
-  toggle:function () {
-    this.refs.leftNav.toggle();
-  },
-
-  close: function () {
-    this.refs.leftNav.close()
-  },
-
-  _onLeftNavChange: function(e, selectedIndex, menuItem) {
-    this.transitionTo(menuItem.payload);
-    this.refs.leftNav.close();
+  handleToggle: function() {
+    this.setState({open: !this.state.open});
   },
 
   handleChannelSelect: function(event, item) {
@@ -67,8 +57,8 @@ ChannelsList = React.createClass({
       <LeftNav
         ref="leftNav"
         docked={false}
-        isInitiallyOpen={false}
-        onClick={this._onLeftNavChange}>
+        open={this.state.open}
+        onClick={this.handleToggle}>
 
         <AppBar title="Channel List ({{this.data.channelsCount}})"/>
 

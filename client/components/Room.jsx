@@ -1,5 +1,3 @@
-injectTapEventPlugin();
-
 const {
     Styles,
     RaisedButton,

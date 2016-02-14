@@ -1,10 +1,10 @@
-FlowRouter.route('/', {
+FlowRouter.route("/", {
   action() {
     FlowRouter.go("/channels");
   }
 });
 
-FlowRouter.route('/channels', {
+FlowRouter.route("/channels", {
   // calls just before the action
   triggersEnter: [checkUserConnected],
   action() {
@@ -12,7 +12,7 @@ FlowRouter.route('/channels', {
   }
 });
 
-FlowRouter.route('/channels/:channelId', {
+FlowRouter.route("/channels/:channelId", {
   // calls just before the action
   triggersEnter: [checkUserConnected],
   action(params, queryParams) {
@@ -21,7 +21,7 @@ FlowRouter.route('/channels/:channelId', {
   }
 });
 
-FlowRouter.route('/signupin', {
+FlowRouter.route("/signupin", {
   action() {
     ReactLayout.render(MinimalLayout, {content: <SignUpIn/>});
   }

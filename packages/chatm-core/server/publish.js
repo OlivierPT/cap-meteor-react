@@ -1,5 +1,6 @@
 
-Meteor.publish('channels', function () {
+Meteor.publish('allchannels', function () {
+    console.log("channels publish");
     return Channels.find();
 });
 
