@@ -1,50 +1,29 @@
-injectTapEventPlugin();
+import React from 'react';
+import AppBar from 'material-ui/lib/app-bar';
+import LeftNav from 'material-ui/lib/left-nav';
+import MenuItem from 'material-ui/lib/menus/menu-item';
+import RaisedButton from 'material-ui/lib/raised-button';
 
-var {
-    AppCanvas,
-    AppBar,
-    Styles,
-    IconButton,
-    IconMenu,
-    FontIcon
-    } = MUI;
-
-var { ThemeManager, LightRawTheme } = Styles;
 
 MainLayout = React.createClass({
   childContextTypes: {
       muiTheme: React.PropTypes.object
   },
 
-  getChildContext: function () {
-      return {
-          muiTheme: ThemeManager.getMuiTheme(LightRawTheme)
-      };
-  },
-
-  _onMenuIconButtonTouchTap: function () {
-      this.refs.leftNav.setState({open: !this.refs.leftNav.state.open});
-    },
 
   render: function () {
     return (
-      <AppCanvas predefinedLayout={1}>
-
+      <div>
           <AppBar
             title={<span>Cap Meteor React</span>}
             onLeftIconButtonTouchTap={this._onMenuIconButtonTouchTap}
-            zDepth={0}
-            iconElementRight={<UserMenu />}>
+            zDepth={0}>
           </AppBar>
-
-          <ChannelsList ref='leftNav'/>
 
           <main className="main">
             {this.props.content}
           </main>
-
-        </AppCanvas>
-
+      </div>
     );
   }
 });

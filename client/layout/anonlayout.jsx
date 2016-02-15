@@ -1,4 +1,6 @@
-MinimalLayout = React.createClass({
+import React from 'react';
+
+AnonLayout = React.createClass({
   render() {
     return (
       <div>

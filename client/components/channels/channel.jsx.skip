@@ -1,0 +1,16 @@
+import React from 'react';
+import MenuItem from 'material-ui/lib/menus/menu-item';
+
+// Channel component
+class Channel extends React.Component {
+
+  render() {
+      <MenuItem key={this.props.channel._id} primaryText={this.props.channel.label}
+        onTouchTap={this.handleChannelSelect.bind(this)}/>
+  }
+
+  handleChannelSelect = (event, item) => {
+    FlowRouter.go("/channels/"+this.props.channel._id);
+  }
+
+}

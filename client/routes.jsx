@@ -1,3 +1,11 @@
+import React from 'react';
+import {mount} from 'react-mounter';
+// load Layout and Welcome React components
+import {MainLayout} from './layout/mainlayout.jsx';
+import {AnonLayout} from './layout/anonlayout.jsx';
+import {Home} from './components/home.jsx';
+import {SignUpIn} from './components/signupin.jsx';
+
 FlowRouter.route("/", {
   action() {
     FlowRouter.go("/channels");
@@ -8,7 +16,7 @@ FlowRouter.route("/channels", {
   // calls just before the action
   triggersEnter: [checkUserConnected],
   action() {
-    ReactLayout.render(MainLayout, {content: <App/>});
+    ReactLayout.render(MainLayout, {content: <Home/>});
   }
 });
 
@@ -23,7 +31,7 @@ FlowRouter.route("/channels/:channelId", {
 
 FlowRouter.route("/signupin", {
   action() {
-    ReactLayout.render(MinimalLayout, {content: <SignUpIn/>});
+    ReactLayout.render(AnonLayout, {content: <SignUpIn/>});
   }
 });
 
