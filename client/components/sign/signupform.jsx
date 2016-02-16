@@ -1,11 +1,13 @@
-var {
-    Styles,
-    RaisedButton,
-    TextField
-    } = MUI;
+import React from 'react';
+import TextField from 'material-ui/lib/text-field';
+import RaisedButton from 'material-ui/lib/raised-button';
 
+export default class SignUpForm extends React.Component {
 
-SignUpForm = React.createClass({
+  constructor(props) {
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
   handleSubmit(event) {
     event.preventDefault();
@@ -31,43 +33,43 @@ SignUpForm = React.createClass({
     this.refs.password.setValue('');
     this.refs.password2.setValue('');
     this.refs.email.setValue('');
-  },
+  }
 
-    render() {
-      return (
-          <form onSubmit={this.handleSubmit} >
+  render() {
+    return (
+        <form onSubmit={this.handleSubmit} >
+          <div>
             <div>
-              <div>
-                <TextField
-                  ref="username"
-                  hintText="Username"
-                  floatingLabelText="Enter your Username" />
-              </div>
-              <div>
-                <TextField
-                  ref="email"
-                  hintText="Email"
-                  floatingLabelText="Enter your Email" />
-              </div>
-              <div>
-                <TextField
-                  ref="password"
-                  hintText="Password"
-                  floatingLabelText="Enter your password"
-                  type="password" />
-              </div>
-              <div>
-                <TextField
-                  ref="password2"
-                  hintText="Password"
-                  floatingLabelText="Confirm your password"
-                  type="password" />
-              </div>
-              <div>
-                <RaisedButton label="Submit" primary={true}  onTouchTap={this.handleSubmit} />
-              </div>
+              <TextField
+                ref="username"
+                hintText="Username"
+                floatingLabelText="Enter your Username" />
             </div>
-        </form>
-      );
-    }
-  });
+            <div>
+              <TextField
+                ref="email"
+                hintText="Email"
+                floatingLabelText="Enter your Email" />
+            </div>
+            <div>
+              <TextField
+                ref="password"
+                hintText="Password"
+                floatingLabelText="Enter your password"
+                type="password" />
+            </div>
+            <div>
+              <TextField
+                ref="password2"
+                hintText="Password"
+                floatingLabelText="Confirm your password"
+                type="password" />
+            </div>
+            <div>
+              <RaisedButton label="Submit" primary={true}  onTouchTap={this.handleSubmit} />
+            </div>
+          </div>
+      </form>
+    );
+  }
+}

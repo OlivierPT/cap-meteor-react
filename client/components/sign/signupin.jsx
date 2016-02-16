@@ -9,7 +9,7 @@ import {SignInForm} from './signinform.jsx';
 import {SignUpForm} from './signupform.jsx';
 
 
-const SignUpIn = () => (
+export const SignUpIn = () => (
     <Card>
         <CardTitle title="Title" subtitle="Subtitle"/>
       <Tabs>
