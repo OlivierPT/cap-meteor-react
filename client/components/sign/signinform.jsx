@@ -3,7 +3,7 @@ import TextField from 'material-ui/lib/text-field';
 import RaisedButton from 'material-ui/lib/raised-button';
 
 
-export default class SignInForm extends React.Component {
+export class SignInForm extends React.Component {
 
   constructor(props) {
     super(props);
@@ -11,6 +11,8 @@ export default class SignInForm extends React.Component {
   }
 
   handleSubmit(event) {
+    console.log("SignInForm.handleSubmit!");
+
     event.preventDefault();
 
     // Find the text field via the React ref
@@ -55,5 +57,5 @@ export default class SignInForm extends React.Component {
         </div>
       </form>
     );
-  };
+  }
 }

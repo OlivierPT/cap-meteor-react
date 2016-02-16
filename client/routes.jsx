@@ -16,7 +16,9 @@ FlowRouter.route("/channels", {
   // calls just before the action
   triggersEnter: [checkUserConnected],
   action() {
-    ReactLayout.render(MainLayout, {content: <Home/>});
+    mount(MainLayout, {
+        content: (<Home/>)
+    });
   }
 });
 
@@ -31,7 +33,9 @@ FlowRouter.route("/channels", {
 
 FlowRouter.route("/signupin", {
   action() {
-    ReactLayout.render(AnonLayout, {content: <SignUpIn/>});
+    mount(MainLayout, {
+        content: (<SignUpIn/>)
+    });
   }
 });
 

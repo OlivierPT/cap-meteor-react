@@ -2,7 +2,7 @@ import React from 'react';
 import TextField from 'material-ui/lib/text-field';
 import RaisedButton from 'material-ui/lib/raised-button';
 
-export default class SignUpForm extends React.Component {
+export class SignUpForm extends React.Component {
 
   constructor(props) {
     super(props);
