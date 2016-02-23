@@ -1,8 +1,12 @@
 import React from 'react';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
 import AppBar from 'material-ui/lib/app-bar';
 import LeftNav from 'material-ui/lib/left-nav';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import RaisedButton from 'material-ui/lib/raised-button';
+
+injectTapEventPlugin();
 
 export const MainLayout = ({content}) => (
   <div>
